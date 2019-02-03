@@ -1,0 +1,367 @@
+<odoo>
+  <data>
+
+
+      <!-- LISTA ORDERS -->
+
+    <record model="ir.ui.view" id="cafeteria.product_list2">
+      <field name="name">Lista de orders</field>
+      <field name="model">cafeteria.employee_order</field>
+      <field name="arch" type="xml">
+        <tree string="Machine list">
+             <field name="employee_id"/>
+            <field name="products_id"/>
+            <field name="quantity"  string="Order quantity"/>
+            <field name="price" string="Order price"/>
+                <field name="order_date" />
+        </tree>
+      </field>
+    </record>
+
+      <!--FORMULARIO ORDERS-->
+
+    <record model="ir.ui.view" id="cafeteria.employee_order_form">
+      <field name="name">Lista de orders</field>
+      <field name="model">cafeteria.employee_order</field>
+      <field name="arch" type="xml">
+        <form>
+		  <sheet>
+            <div class="oe_title">
+
+            </div>
+		  <group>
+			<group>
+                <field name="products_id"  modifiers="{'required': true}" widget="selection"/>
+                <field name="employee_id"  modifiers="{'required': true}" widget="selection"/>
+			 </group>
+
+              <group>
+                <field name="quantity"/>
+                <field name="order_date" />
+			 </group>
+
+		  </group>
+              <label for="price" string="Order price"/>
+              <field name="price"/>
+		  </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cafeteria.employee_order_action_window">
+      <field name="name">Lista de orders</field>
+      <field name="res_model">cafeteria.employee_order</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+
+    <!-- LISTA PRODUCTOS -->
+
+    <record model="ir.ui.view" id="cafeteria.product_list">
+      <field name="name">Lista de productos</field>
+      <field name="model">cafeteria.product</field>
+      <field name="arch" type="xml">
+        <tree string="Machine list" decoration-bf="description=='on_use'" decoration-danger="description=='repairing'">
+          <field name="name"/>
+            <field name="description"/>
+            <field name="type_id"/>
+		   <field name="provider_id"/>
+		  <field name="barcode"/>
+            <field name="price"  string="Price/Unit"/>
+            <field name="state_id"/>
+             <field name="expiry_date"/>
+        </tree>
+      </field>
+    </record>
+
+      <!--FORMULARIO PRODUCTOS-->
+
+    <record model="ir.ui.view" id="cafeteria.product_form">
+      <field name="name">Lista de productos</field>
+      <field name="model">cafeteria.product</field>
+      <field name="arch" type="xml">
+        <form>
+		  <sheet>
+            <div class="oe_title">
+            <label for="name" string="Product name" class="oe_edit_only"/>
+            <h1>
+                <field name="name" placeholder="Product name" modifiers="{'required': true}"/>
+            </h1>
+            </div>
+		  <group>
+			<group>
+
+			  <field name="description"/>
+			  <field name="barcode" />
+                <field name="type_id"  widget="selection"/>
+			 </group>
+			 <group>
+                 <field name="provider_id"  widget="selection"/>
+			  <field name="price" />
+                 <field name="quantity" />
+                  <field name="expiry_date" />
+
+			 </group>
+
+		  </group>
+              <field name="state_id"  widget="selection"/>
+
+		  </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cafeteria.product_action_window">
+      <field name="name">Lista de productos</field>
+      <field name="res_model">cafeteria.product</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+
+
+
+          <!-- LISTA PROVIDERS -->
+
+    <record model="ir.ui.view" id="cafeteria.provider_list">
+      <field name="name">Lista de proveedores</field>
+      <field name="model">cafeteria.provider</field>
+      <field name="arch" type="xml">
+        <tree string="Provider list">
+          <field name="name"/>
+
+        </tree>
+      </field>
+    </record>
+
+      <!--FORMULARIO PROVIDER-->
+
+    <record model="ir.ui.view" id="cafeteria.provider_form">
+      <field name="name">Lista de productos</field>
+      <field name="model">cafeteria.provider</field>
+      <field name="arch" type="xml">
+        <form>
+		  <sheet>
+            <div class="oe_title">
+            <label for="name" string="Provider name"/>
+            <h1>
+                <field name="name"  modifiers="{'required': true}"/>
+            </h1>
+            </div>
+		  </sheet>
+        </form>
+      </field>
+    </record>
+
+
+
+              <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cafeteria.provider_action_window">
+      <field name="name">Lista de proveedores</field>
+      <field name="res_model">cafeteria.provider</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+
+              <!-- LISTA TYPES -->
+
+        <record model="ir.ui.view" id="cafeteria.type_list">
+          <field name="name">Tipo de productos</field>
+          <field name="model">cafeteria.type</field>
+          <field name="arch" type="xml">
+            <tree string="Type list">
+              <field name="name"/>
+
+            </tree>
+          </field>
+        </record>
+
+          <!--FORMULARIO TYPES-->
+
+        <record model="ir.ui.view" id="cafeteria.type_form">
+          <field name="name">Tipo de productos</field>
+          <field name="model">cafeteria.type</field>
+          <field name="arch" type="xml">
+            <form>
+              <sheet>
+                <div class="oe_title">
+                <label for="name" string="Type name" />
+                <h1>
+                    <field name="name"  modifiers="{'required': true}"/>
+                </h1>
+                </div>
+              </sheet>
+            </form>
+          </field>
+        </record>
+
+
+              <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cafeteria.type_action_window">
+      <field name="name">Tipos de productos</field>
+      <field name="res_model">cafeteria.type</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+
+      <!-- LISTA STATE -->
+
+        <record model="ir.ui.view" id="cafeteria.state_list">
+          <field name="name">Estados</field>
+          <field name="model">cafeteria.state</field>
+          <field name="arch" type="xml">
+            <tree string="Type list">
+              <field name="name"/>
+
+            </tree>
+          </field>
+        </record>
+
+          <!--FORMULARIO STATE-->
+
+        <record model="ir.ui.view" id="cafeteria.state_form">
+          <field name="name">Estados</field>
+          <field name="model">cafeteria.state</field>
+          <field name="arch" type="xml">
+            <form>
+              <sheet>
+                <div class="oe_title">
+                <label for="name" string="State name"/>
+                <h1>
+                    <field name="name" modifiers="{'required': true}"/>
+                </h1>
+                </div>
+              </sheet>
+            </form>
+          </field>
+        </record>
+
+        <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="cafeteria.state_action_window">
+      <field name="name">Estados</field>
+      <field name="res_model">cafeteria.state</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+      <!-- calendar view -->
+    <record model="ir.ui.view" id="cafeteria.product_calendar">
+        <field name="name">product.calendar</field>
+        <field name="model">cafeteria.product</field>
+        <field name="arch" type="xml">
+            <calendar string="Session Calendar" date_start="expiry_date"
+                color="name" mode="month">
+                <field name="name"/>
+            </calendar>
+        </field>
+    </record>
+
+
+<record model="ir.actions.act_window" id="cafeteria.product_action_window_calendar">
+      <field name="name">Fechas de caducidad</field>
+      <field name="res_model">cafeteria.product</field>
+      <field name="view_mode">calendar,form</field>
+    </record>
+
+
+
+      <!--SEARCH ORDERS-->
+
+      <record id="cafeteria.employee_order_search_view"  model="ir.ui.view">
+      <field name="model">cafeteria.employee_order</field>
+      <field name="arch" type="xml">
+        <search>
+            <field name="employee_id"/>
+            <field name="products_id"/>
+        </search>
+      </field>
+    </record>
+
+
+      <!--SEARCH PRODUCTS-->
+
+      <record id="cafeteria.product_search_view"  model="ir.ui.view">
+      <field name="model">cafeteria.product</field>
+      <field name="arch" type="xml">
+        <search>
+            <field name="name"/>
+            <field name="description"/>
+            <field name="state_id"/>
+            <field name="provider_id"/>
+             <field name="barcode"/>
+
+            <filter name="my_product" string="Disponibles"
+            domain="[('state_id', '=', 'Disponible')]"/>
+             <filter name="my_product" string="No disponibles"
+            domain="[('state_id', '=', 'No disponible')]"/>
+            <filter name="my_product" string="Caducados"
+            domain="[('state_id', '=', 'Caducado')]"/>
+            <filter name="my_product" string="Agotados"
+            domain="[('state_id', '=', 'Agotado')]"/>
+
+            <group string="Group By">
+            <filter name="group_by_state" string="Estado"
+            context="{'group_by': 'state_id'}"/>
+            </group>
+            <group string="Group By">
+            <filter name="group_by_state" string="Tipo"
+            context="{'group_by': 'type_id'}"/>
+             </group>
+                <group string="Group By">
+            <filter name="group_by_state" string="Proveedor"
+            context="{'group_by': 'provider_id'}"/>
+            </group>
+
+        </search>
+      </field>
+    </record>
+
+
+      <!--MENUS-->
+
+    <!-- Top menu item -->
+    <menuitem
+            name="Cafeteria"
+            id="cafeteria.menu_root"
+            web_icon="cafeteria,static/description/icon.png" />
+
+
+  <!-- menu categories -->
+      <menuitem name="Cafeteria" id="cafeteria.menu_1" parent="cafeteria.menu_root"
+              action="cafeteria.product_action_window"
+                />
+    <menuitem name="Config" id="cafeteria.menu_2" parent="cafeteria.menu_root"
+              action="cafeteria.product_action_window"
+                />
+
+      <menuitem name="Calendar" id="cafeteria.menu_3" parent="cafeteria.menu_root"
+              action="cafeteria.product_action_window"
+                />
+
+    <!-- actions -->
+    <menuitem name="Employees orders" id="cafeteria.menu_1_1" parent="cafeteria.menu_1"
+              action="cafeteria.employee_order_action_window"/>
+      <menuitem name="Product list" id="cafeteria.menu_2_1" parent="cafeteria.menu_2"
+              action="cafeteria.product_action_window"/>
+      <menuitem name="Provider list" id="cafeteria.menu_2_2" parent="cafeteria.menu_2"
+              action="cafeteria.provider_action_window"/>
+      <menuitem name="Type list" id="cafeteria.menu_2_3" parent="cafeteria.menu_2"
+              action="cafeteria.type_action_window"/>
+      <menuitem name="State list" id="cafeteria.menu_2_4" parent="cafeteria.menu_2"
+              action="cafeteria.state_action_window"/>
+      <menuitem name="Product Calendar" id="cafeteria.menu_3_1" parent="cafeteria.menu_3"
+              action="cafeteria.product_action_window_calendar"/>
+
+
+  </data>
+</odoo>
